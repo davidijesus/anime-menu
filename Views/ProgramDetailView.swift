@@ -66,9 +66,65 @@ struct ProgramaDetailView: View {
                 }
                 .frame(height: 280)
 
-                // TODO F: Sinopse
-                // TODO G: InfoBadges
-                // TODO H: Personagens
+                // Sinopse
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Sinopse")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+
+                    Text(programa.sinopse)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .lineSpacing(4)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(.horizontal, 20)
+
+                // InfoBadges: episodios, temporadas, status
+                HStack(spacing: 10) {
+                    InfoBadge(
+                        icon: "play.circle.fill",
+                        valor: "\(programa.episodios)",
+                        rotulo: "Episódios",
+                        cor: .orange
+                    )
+                    InfoBadge(
+                        icon: "tv.fill",
+                        valor: "\(programa.temporadas)",
+                        rotulo: "Temporadas",
+                        cor: .green
+                    )
+                    InfoBadge(
+                        icon: programa.status == "Concluido" ? "checkmark.circle.fill" : "antenna.radiowaves.left.and.right",
+                        valor: programa.status,
+                        rotulo: "Status",
+                        cor: .blue
+                    )
+                }
+                .padding(.horizontal, 20)
+
+                // Personagens
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Personagens Principais")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                        .padding(.horizontal, 20)
+
+                    VStack(spacing: 8) {
+                        ForEach(programa.personagens, id: \.nome) { personagem in
+                            CharacterRow(
+                                nome: personagem.nome,
+                                papel: personagem.papel,
+                                emoji: personagem.emoji
+                            )
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+
+                Spacer(minLength: 32)
             }
         }
         .ignoresSafeArea(edges: .top)
