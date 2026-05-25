@@ -1,23 +1,28 @@
 import SwiftUI
 
-// ListaView.swift
+// ListaView.swift -- 
 struct ListaView: View {
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
-                ShowCard(programa:naruto)
-                NavigationLink(destination:ProgramDetailView(programa:naruto)){}
-                
-                ShowCard(programa:avatar)
-                NavigationLink(destination:ProgramDetailView(programa:naruto)){}
-                
-                ShowCard(programa:strangerThings)
-                NavigationLink(destination:ProgramDetailView(programa:naruto)){}
-
+            // Com scrollview e o foreach para suportar qualquer quantidade de animes séries e desenhos (ou também doramas, rs)
+            ScrollView {
+                VStack(spacing: 16) {
+                    ForEach(programas) { programa in
+                        NavigationLink(destination: ProgramaDetailView(programa: programa)) {
+                            ShowCard(programa: programa)
+                        }
+                        .buttonStyle(.plain)   
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
             }
-            .padding()
+            .background(Color(.systemGroupedBackground))
             .navigationTitle("Programas")
         }
     }
 }
 
+#Preview {
+    ListaView()
+}
