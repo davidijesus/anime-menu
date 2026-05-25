@@ -1,7 +1,8 @@
 import SwiftUI
 
 // Programa.swift -- fornecido pelo professor
-struct Programa {
+struct Programa: Identifiable {
+    let id = UUID()
     let nome: String
     let tipo: String       // "Anime" | "Desenho" | "Serie"
     let emoji: String
@@ -13,8 +14,8 @@ struct Programa {
     let status: String     // "Em exibicao" | "Concluido"
     let personagens: [(nome: String, papel: String, emoji: String)]
 }
- 
-// Dados fornecidos -- nao alterar
+
+// Dados fornecidos -- nao alterar (apenas adicionado Identifiable para suporte ao ForEach)
 let naruto = Programa(
     nome: "Naruto", tipo: "Anime", emoji: "\u{1F9C6}",
     genero: "Acao - Aventura",
@@ -25,7 +26,7 @@ let naruto = Programa(
                   ("Sasuke Uchiha","Rival","\u{26A1}"),
                   ("Sakura Haruno","Companheira","\u{1F338}")]
 )
- 
+
 let avatar = Programa(
     nome: "Avatar: A Lenda de Aang", tipo: "Desenho", emoji: "\u{1F30A}",
     genero: "Aventura - Fantasia",
@@ -36,7 +37,7 @@ let avatar = Programa(
                   ("Katara","Aliada","\u{1F4A7}"),
                   ("Zuko","Antagonista","\u{1F525}")]
 )
- 
+
 let strangerThings = Programa(
     nome: "Stranger Things", tipo: "Serie", emoji: "\u{1F526}",
     genero: "Terror - Ficcao Cientifica",
@@ -48,3 +49,5 @@ let strangerThings = Programa(
                   ("Demogorgon","Antagonista","\u{1F479}")]
 )
 
+// Array para o ForEach do "Ir Alem"
+let programas: [Programa] = [naruto, avatar, strangerThings]
