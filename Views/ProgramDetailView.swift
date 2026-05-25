@@ -2,6 +2,7 @@ import SwiftUI
 
 // PrtogramDetailView.swift
 struct ProgramDetailView: View {
+    let programa = Programa
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -10,8 +11,9 @@ struct ProgramDetailView: View {
  
                 // TODO F: secao Sinopse (Text com naruto.sinopse)
  
-                // TODO G: HStack com 3x InfoBadge
-                //         (episodios, temporadas, status)
+                HStack(spacing: 8) {
+                    
+                }
  
                 // TODO H: secao Personagens
                 //         ForEach sobre naruto.personagens
