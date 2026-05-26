@@ -86,7 +86,6 @@ struct ShowCard: View {
                 // TODO D: Chevron a direita
                 Image(systemName: "chevron.right")
                     .font(.caption)
-                    .foregroundColor(.tertiary)
                     .padding(.trailing, 12)
             }
             .padding(.vertical, 12)
